@@ -1,4 +1,4 @@
-{% include 'base.html'%}
+{% include 'base.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,29 +11,29 @@
     {% csrf_token %}
     <div class="row">
         {% for f in form %}
-        {% if f.label == 'Error codes'%}
-        <select class="mdb-select md-form" multiple>
-            {% for field in f %}
-            <option value=""> {{ f }}</option>
-            {% endfor %}
-        </select>
-        {% else %}
-        <div class="col">
+            {% if f.label == 'Error codes' %}
+                <select class="form-select" multiple aria-label="multiple select example">
+                    {% for field in f %}
+                        <option value=""> {{ field }}</option>
+                    {% endfor %}
+                </select>
+            {% else %}
+                <div class="col">
 
-            {{ f }}
-        </div>
-        {% endif %}
+                    {{ f }}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
     <input type="submit" value="Submit">
 </form>
 <p> Jau suvestos gamybos</p>
 {% for item in all %}
-Prod No:{{ item.prod_no }} Serial: {{ item.serial_no}} <br/>
+    Prod No:{{ item.prod_no }} Serial: {{ item.serial_no }} <br/>
 {% endfor %}
 
-<script>$(document).ready(function() {
-$('.mdb-select').materialSelect();
+<script>$(document).ready(function () {
+    $('.mdb-select').materialSelect();
 });
 </script>
 
