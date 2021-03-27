@@ -1,11 +1,13 @@
-from django.forms import ModelForm
-from .models import Product
+from django.forms import ModelForm, CharField, HiddenInput, ModelChoiceField
+from .models import Product, ProductsToRepair
 
 
 class ProductForm(ModelForm):
+    # user = CharField(widget=HiddenInput())
+    # product_state = ModelChoiceField(ProductsToRepair.objects.all())
     class Meta:
         model = Product
-        fields = ['prod_no', 'serial_no', 'line', 'user', 'error_codes','product_state']
+        fields = ['prod_no', 'serial_no', 'line', 'user', 'error_codes', 'product_state']
 
 
-form_prod = ProductForm()
+# form_prod = ProductForm()

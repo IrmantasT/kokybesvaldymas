@@ -7,33 +7,52 @@
     <title>Production form</title>
 </head>
 <body>
-<form method="post">
-    {% csrf_token %}
-    <div class="row">
-        {% for f in form %}
-            {% if f.label == 'Error codes' %}
-                <select class="form-select" multiple aria-label="multiple select example">
-                    {% for field in f %}
-                        <option value=""> {{ field }}</option>
-                    {% endfor %}
-                </select>
-            {% else %}
-                <div class="col">
-
-                    {{ f }}
-                </div>
-            {% endif %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.prod_no }}
+        {{ form.serial_no }}
+        {{ form.line }}
+{#        {{ form.user }}#}
+        {{ form.product_state }}
+        <input type="submit" value="Submit">
+        <br>
+        <p></p>
+        <br>
+        {% for field in form.error_codes %}
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+{#            <select class="form-check">#}
+            <input type="checkbox" class="btn-check" value='{{ field }}' id="Test{{ forloop.counter }}" autocomplete="off">
+             <label class="btn btn-outline-primary" for="Test{{ forloop.counter }}">{{ field }}</label><br>
+{#            {{ field }}#}
+{#            </select>#}
+            </div>
         {% endfor %}
-    </div>
-    <input type="submit" value="Submit">
-</form>
-<p> Jau suvestos gamybos</p>
-{% for item in all %}
-    Prod No:{{ item.prod_no }} Serial: {{ item.serial_no }} <br/>
-{% endfor %}
 
+
+{#        <div>#}
+{#            {% for f in form %}#}
+{#                {% if f.label == 'Error codes' %}#}
+{#                    <select class="form-select" multiple aria-label="multiple select example">#}
+{#                        {% for field in f %}#}
+{#                            {{ field }}#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+{##}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            <input type="submit" value="Submit">#}
+
+
+
+    </form>
+    <p> Jau suvestos gamybos</p>
+    {% for item in all %}
+        Prod No:{{ item.prod_no }} Serial: {{ item.serial_no }} <br/>
+    {% endfor %}
+</div>
 <script>$(document).ready(function () {
-    $('.mdb-select').materialSelect();
+    $('.btn-check').materialSelect();
 });
 </script>
 
