@@ -23,4 +23,5 @@ urlpatterns = [
     path('production/',views.post_product),
     path('getproduct/',views.all_production),
     path('', include("django.contrib.auth.urls")),
+    path('repare/', views.getrepare),
 ]

@@ -10,4 +10,7 @@ class ProductForm(ModelForm):
         fields = ['prod_no', 'serial_no', 'line', 'user', 'error_codes', 'product_state']
 
 
-# form_prod = ProductForm()
+class SearchForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ['serial_no']

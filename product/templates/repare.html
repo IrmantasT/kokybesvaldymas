@@ -1,0 +1,21 @@
+{% include 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repare form</title>
+</head>
+<body>
+    <form method="GET">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+    </form>
+
+<p> Rastas objektas</p>
+    {% for item in post %}
+        Prod No:{{ item.prod_no }} Serial: {{ item.serial_no }} User: {{ item.user }} <br/>
+    {% endfor %}
+</body>
+</html>
